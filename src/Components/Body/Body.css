@@ -1,0 +1,68 @@
+/* Body.css */
+
+.body {
+    font-family: "Arial", sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* Search Section */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.search-input {
+    width: 60%;
+    max-width: 600px;
+    padding: 12px 15px;
+    border: 2px solid #ff6f3c;
+    border-radius: 50px 0 0 50px;
+    outline: none;
+    font-size: 18px;
+}
+
+.search-button {
+    padding: 12px 20px;
+    background-color: #ff6f3c;
+    color: #fff;
+
+    border: 2px solid #ff6f3c;
+    border-radius: 0 50px 50px 0;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #e65c2b;
+}
+
+/* Restaurants Container */
+.res-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.restaurant-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 20px;
+
+    justify-content: center;
+}
