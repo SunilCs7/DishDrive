@@ -1,5 +1,6 @@
 import React from "react";
 import "./RestaurantCard.css";
+import { CDN_URL } from "../../utils/Contrants";
 
 const RestaurantCard = (props) => {
   const { resObj } = props;
@@ -7,10 +8,7 @@ const RestaurantCard = (props) => {
     <>
       <div className="res-card">
         <img
-          src={
-            "https://media-assets.swiggy.com/swiggy/image/upload/" +
-            resObj?.card?.card?.info?.cloudinaryImageId
-          }
+          src={CDN_URL + resObj?.card?.card?.info?.cloudinaryImageId}
           alt="res-img"
         />
         <h1>{resObj?.card?.card?.info?.name}</h1>
