@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import "./Body.css";
+// import Loading from "../Loading/Loading";
+import Shimmer from "../Shimmer/Shimmer";
 import resData from "../../utils/data";
 
 const Body = () => {
@@ -22,6 +24,19 @@ const Body = () => {
 
     // setListOfRestaurants(json?.data?.card[1]?.data?.data?.cards);
   };
+
+  // using loading sceen from cool user expreriemce while api load on ui
+
+  // if (listOfRestaurants.length === 0) {
+  //   return <Loading />;
+  // }
+
+  // using Shimmer Ui kind of face cards its is latest standard practices for loading before the u get api data
+
+  if (listOfRestaurants.length === 0) {
+    // this concept is known as conditional rendering
+    return <Shimmer />;
+  }
 
   return (
     <>

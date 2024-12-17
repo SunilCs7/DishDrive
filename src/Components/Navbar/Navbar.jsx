@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import navLogo from "../../assets/logo_Proffood.avif";
 
 const Navbar = () => {
+  const [loginBtn, setLoginBtn] = useState("login");
   return (
     <>
       <div className="navbar">
@@ -16,6 +17,14 @@ const Navbar = () => {
             <li>About Us</li>
             <li>Cnotact Us</li>
             <li>Cart</li>
+            <li
+              className="login-btn"
+              onClick={() =>
+                setLoginBtn(loginBtn === "login" ? "logout" : "login")
+              }
+            >
+              {loginBtn}
+            </li>
           </ul>
         </div>
       </div>
