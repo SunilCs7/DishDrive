@@ -14,6 +14,16 @@ const Shimmer = () => {
             <div className="shimmer-text shimmer-line"></div>
             <div className="shimmer-text shimmer-line"></div>
             <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
+            <div className="shimmer-text shimmer-small"></div>
           </div>
         ))}
     </div>

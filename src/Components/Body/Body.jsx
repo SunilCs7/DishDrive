@@ -3,26 +3,35 @@ import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import "./Body.css";
 // import Loading from "../Loading/Loading";
 import Shimmer from "../Shimmer/Shimmer";
-import resData from "../../utils/data";
+// import resData from "../../utils/data";
 
 const Body = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState(resData);
+  // const [listOfRestaurants, setListOfRestaurants] = useState(resData);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+
+  // For search functionality,we need to sate variables
+  const [filteredRestuarant, setFilteredRestuarant] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/search/v3?lat=20.27060&lng=85.83340&str=popular%20dish&trackingId=0ad2e8eb-1af7-0c4f-450a-b45766d836ed&submitAction=ENTER&queryUniqueId=76cda06c-152e-50a5-3137-21d619a47b9c"
-    );
+    // create own api/server by using this command--------------->>>>>>>>>>>>npx json-server --watch jsonData.json --port 4000
+
+    const data = await fetch("http://localhost:4000/data");
     const json = await data.json();
 
-    // console.log(json);
+    console.log(json);
 
     // loading dynamics data from swigy api
 
-    // setListOfRestaurants(json?.data?.card[1]?.data?.data?.cards);
+    setTimeout(() => {
+      setListOfRestaurants(json?.cards);
+      // after seach the restaurants functionality
+      setFilteredRestuarant(json?.cards);
+    }, 2000);
   };
 
   // using loading sceen from cool user expreriemce while api load on ui
@@ -46,8 +55,24 @@ const Body = () => {
             type="text"
             className="search-input"
             placeholder="Search for restaurants..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
           />
-          <button className="search-button">Search</button>
+          <button
+            className="search-button"
+            // Filter the restuarant cards and update the UI
+            onClick={() => {
+              const filteredRestaurants = listOfRestaurants.filter(
+                (restaurant) =>
+                  restaurant?.card?.card?.info?.name
+                    ?.toLowerCase()
+                    .includes(searchText.toLowerCase())
+              );
+              setFilteredRestuarant(filteredRestaurants); // Update the filtered list
+            }}
+          >
+            Search
+          </button>
         </div>
         <div className="filter-res-data">
           <button
@@ -65,7 +90,7 @@ const Body = () => {
         <div className="res-container">
           <h2 className="section-title">Top Restaurants</h2>
           <div className="restaurant-list">
-            {listOfRestaurants.map((res) => (
+            {filteredRestuarant.map((res) => (
               <RestaurantCard key={res.card.card.info.id} resObj={res} />
             ))}
           </div>
