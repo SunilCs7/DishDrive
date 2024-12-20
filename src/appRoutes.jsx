@@ -4,12 +4,13 @@ import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import Body from "./Components/Body/Body";
 import Error from "./Components/Error/Error";
+import RestuarantMenu from "./Components/RestuarantMenu/RestuarantMenu";
 
 const appRoutes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <Error />, // Handle errors for this route
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -22,6 +23,10 @@ const appRoutes = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/restuarant/:resid",
+        element: <RestuarantMenu />,
       },
     ],
   },

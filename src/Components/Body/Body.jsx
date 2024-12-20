@@ -4,6 +4,7 @@ import "./Body.css";
 // import Loading from "../Loading/Loading";
 import Shimmer from "../Shimmer/Shimmer";
 // import resData from "../../utils/data";
+import { Link } from "react-router";
 
 const Body = () => {
   // const [listOfRestaurants, setListOfRestaurants] = useState(resData);
@@ -91,7 +92,12 @@ const Body = () => {
           <h2 className="section-title">Top Restaurants</h2>
           <div className="restaurant-list">
             {filteredRestuarant.map((res) => (
-              <RestaurantCard key={res.card.card.info.id} resObj={res} />
+              <Link
+                key={res.card.card.info.id}
+                to={"/restuarant/" + res.card.card.info.id}
+              >
+                <RestaurantCard resObj={res} />
+              </Link>
             ))}
           </div>
         </div>
