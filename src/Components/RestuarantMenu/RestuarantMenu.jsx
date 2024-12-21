@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./RestuarantMenu.css";
 import Shimmer from "../Shimmer/Shimmer";
+import { MENU_URL } from "../../utils/Contrants";
+import { useParams } from "react-router";
 
 const SWIGGY_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload";
 
 const RestuarantMenu = () => {
   const [menu, setMenu] = useState(null);
+  const params = useParams();
 
   useEffect(() => {
     fetchMenu();
@@ -13,9 +16,8 @@ const RestuarantMenu = () => {
 
   const fetchMenu = async () => {
     try {
-      const data = await fetch(
-        "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.27060&lng=85.83340&restaurantId=208058&catalog_qa=undefined&query=Biryani&submitAction=ENTER"
-      );
+      const data = await fetch(MENU_URL);
+      // const data = await fetch(MENU_URL + params.resid);
       const json = await data.json();
       setMenu(json?.data);
     } catch (error) {

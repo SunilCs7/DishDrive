@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import "./Navbar.css";
 import navLogo from "../../assets/logo_Proffood.avif";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../CustomHook/useOnlineStatus";
 
 const Navbar = () => {
+  // Custom hook to check online status
+  const onlineStatus = useOnlineStatus(); // Ensures hook is used unconditionally
+
   const [loginBtn, setLoginBtn] = useState("Login");
 
   const toggleLogin = () => {
@@ -18,6 +22,7 @@ const Navbar = () => {
       </div>
       <div className="nav-menu">
         <ul>
+          <li>Online Status:{onlineStatus ? "🟢" : "🔴"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>
