@@ -1,106 +1,72 @@
 import React, { useEffect, useState } from "react";
 import "./RestuarantMenu.css";
 import Shimmer from "../Shimmer/Shimmer";
-import { MENU_URL } from "../../utils/Contrants";
-import { useParams } from "react-router";
 
-const SWIGGY_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload";
+import { MENU_API, CDN_URL } from "../../utils/Contrants";
+import { useParams } from "react-router-dom";
 
 const RestuarantMenu = () => {
-  const [menu, setMenu] = useState(null);
+  const [resInfo, setResInfo] = useState(null);
+
   const params = useParams();
+  // console.log("the res ID is", params);
+
+  const fetchMenu = async () => {
+    try {
+      const res = await fetch(MENU_API + params.resid);
+      const data = await res.json();
+
+      console.log("menudata" + data);
+      setResInfo(data);
+    } catch (error) {
+      console.error("Error fetching the menu:", error);
+    }
+  };
 
   useEffect(() => {
     fetchMenu();
   }, []);
 
-  const fetchMenu = async () => {
-    try {
-      const data = await fetch(MENU_URL);
-      // const data = await fetch(MENU_URL + params.resid);
-      const json = await data.json();
-      setMenu(json?.data);
-    } catch (error) {
-      console.error("Error fetching menu:", error);
-    }
-  };
+  if (resInfo === null) {
+    return <Shimmer />;
+  }
 
-  if (!menu) return <Shimmer />;
+  const { name, cuisines } = resInfo?.data?.cards[2]?.card?.card?.info;
 
-  const restaurantInfo = menu?.cards?.[2]?.card?.card?.info || {};
-  const {
-    name: restaurantName,
-    cuisines,
-    costForTwoMessage: costForTwo,
-    cloudinaryImageId,
-    avgRating,
-    deliveryTime,
-    totalRatingsString,
-  } = restaurantInfo;
-
-  const menuItems =
-    menu?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
-      (card) =>
-        card?.card?.card?.["@type"] ===
-        "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-    );
+  const { itemCards, title } =
+    resInfo?.data?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[3]
+      ?.card?.card;
 
   return (
     <div className="menu-container">
-      <div className="restaurant-header">
-        <img
-          src={`${SWIGGY_CDN_URL}/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
-          alt={restaurantName}
-          className="restaurant-image"
-        />
-        <div className="restaurant-info">
-          <h1>{restaurantName}</h1>
-          <p className="cuisines">{cuisines?.join(", ")}</p>
-          <div className="meta-info">
-            <span className="rating">★ {avgRating}</span>
-            <span className="dot">•</span>
-            <span>{deliveryTime} mins</span>
-            <span className="dot">•</span>
-            <span>{costForTwo}</span>
-          </div>
-          <p className="ratings-string">{totalRatingsString}</p>
-        </div>
+      <div className="menu-header">
+        <h2 className="menu-title">{name}</h2>
+        <p className="menu-cuisines">{cuisines.join(", ")}</p>
       </div>
 
-      <div className="menu-list">
-        {menuItems?.map((category) => (
-          <div key={category?.card?.card?.title} className="menu-category">
-            <h2 className="category-title">{category?.card?.card?.title}</h2>
-            <div className="items-container">
-              {category?.card?.card?.itemCards?.map((item) => (
-                <div key={item?.card?.info?.id} className="menu-item">
-                  <div className="item-details">
-                    <h3>{item?.card?.info?.name}</h3>
-                    <p className="price">
-                      ₹
-                      {item?.card?.info?.price / 100 ||
-                        item?.card?.info?.defaultPrice / 100}
-                    </p>
-                    <p className="description">
-                      {item?.card?.info?.description}
-                    </p>
-                  </div>
-                  {item?.card?.info?.imageId && (
-                    <div className="item-image-container">
-                      <img
-                        src={`${SWIGGY_CDN_URL}/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${item?.card?.info?.imageId}`}
-                        alt={item?.card?.info?.name}
-                        className="item-image"
-                      />
-                      <button className="add-btn">Add +</button>
-                    </div>
-                  )}
-                </div>
-              ))}
+      <h3 className="menu-section-title">{title}</h3>
+      <ul className="menu-items">
+        {itemCards.map((item, index) => (
+          <li key={index} className="menu-item">
+            <img
+              className="menu-item-image"
+              src={CDN_URL + item.card?.info?.imageId}
+              alt={item.card?.info?.name}
+            />
+            <div className="menu-item-details">
+              <h4 className="menu-item-name">{item.card?.info?.name}</h4>
+              <p className="menu-item-description">
+                {item.card?.info?.description || "No description available"}
+              </p>
             </div>
-          </div>
+            <div className="menu-item-price">
+              ₹
+              {item.card?.info?.price / 100 ||
+                item.card?.info?.defaultPrice / 100}
+            </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

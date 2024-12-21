@@ -4,6 +4,7 @@ import "./Body.css";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router";
 import useOnlineStatus from "../../CustomHook/useOnlineStatus";
+import Game from "../Game/Game";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -26,13 +27,11 @@ const Body = () => {
 
       setListOfRestaurants(json?.cards || []);
       setFilteredRestuarant(json?.cards || []);
-    }, 2000); // 2-second delay
+    }, 100); // 2-second delay
   };
 
   if (!onlineStatus) {
-    return (
-      <h1>Looks like you're offline! Please check your internet connection.</h1>
-    );
+    return <Game />;
   }
 
   if (listOfRestaurants.length === 0) {
