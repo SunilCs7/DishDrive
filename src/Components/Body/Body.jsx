@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import RestaurantCard from "../RestaurantCard/RestaurantCard";
+import RestaurantCard, {
+  WithPromotedLebel,
+} from "../RestaurantCard/RestaurantCard";
 import "./Body.css";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router";
@@ -11,6 +13,9 @@ const Body = () => {
   const [filteredRestuarant, setFilteredRestuarant] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+  console.log("Body", listOfRestaurants);
+  const RstaurantCardWithPromoted = WithPromotedLebel(RestaurantCard);
+
   // Custom hook to check online status
   const onlineStatus = useOnlineStatus(); // Ensures hook is used unconditionally
 
@@ -21,10 +26,10 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch("http://localhost:4000/data");
+
     const json = await data.json();
     setTimeout(() => {
       // Your code to execute after the delay
-
       setListOfRestaurants(json?.cards || []);
       setFilteredRestuarant(json?.cards || []);
     }, 100); // 2-second delay
@@ -38,6 +43,16 @@ const Body = () => {
     return <Shimmer />;
   }
 
+  // Function to handle search
+  const handleSearch = () => {
+    const filtered = listOfRestaurants.filter((restaurant) =>
+      restaurant?.card?.card?.info?.name
+        ?.toLowerCase()
+        .includes(searchText.toLowerCase())
+    );
+    setFilteredRestuarant(filtered);
+  };
+
   return (
     <div className="body">
       <div className="search-container">
@@ -47,18 +62,13 @@ const Body = () => {
           placeholder="Search for restaurants..."
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
-        />
-        <button
-          className="search-button"
-          onClick={() => {
-            const filtered = listOfRestaurants.filter((restaurant) =>
-              restaurant?.card?.card?.info?.name
-                ?.toLowerCase()
-                .includes(searchText.toLowerCase())
-            );
-            setFilteredRestuarant(filtered);
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSearch(); // Trigger search when Enter is pressed
+            }
           }}
-        >
+        />
+        <button className="search-button" onClick={handleSearch}>
           Search
         </button>
       </div>
@@ -83,7 +93,11 @@ const Body = () => {
               key={res.card.card.info.id}
               to={"/restuarant/" + res.card.card.info.id}
             >
-              <RestaurantCard resObj={res} />
+              {res.card.card.info.promoted ? (
+                <RstaurantCardWithPromoted resObj={res} />
+              ) : (
+                <RestaurantCard resObj={res} />
+              )}
             </Link>
           ))}
         </div>

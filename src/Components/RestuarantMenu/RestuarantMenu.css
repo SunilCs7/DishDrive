@@ -1,84 +1,143 @@
-/* Styling for Swiggy-like Restaurant Menu */
+/* RestuarantMenu.css */
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #f4f4f8;
+}
+
 .menu-container {
-    padding: 20px;
     max-width: 1200px;
-    margin: auto;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .menu-header {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .menu-title {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333333;
 }
 
 .menu-cuisines {
     font-size: 1.2rem;
-    color: #666;
+    color: #777777;
+    margin-top: 8px;
 }
 
 .menu-section-title {
-    font-size: 1.5rem;
-    margin: 20px 0;
-    color: #444;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px 0 20px;
+    color: #444444;
+    text-align: left;
     border-bottom: 2px solid #ddd;
     padding-bottom: 5px;
 }
 
 .menu-items {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    list-style: none;
-    padding: 0;
 }
 
 .menu-item {
-    background: #fff;
-    border-radius: 8px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f3);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -5px -5px 10px #ffffff;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu-item:hover {
-    transform: translateY(-5px);
+    transform: scale(1.05);
+    box-shadow: 15px 15px 25px rgba(0, 0, 0, 0.15), -7px -7px 12px #ffffff;
 }
 
 .menu-item-image {
     width: 100%;
-    height: 150px;
+    height: 200px;
     object-fit: cover;
+    border-bottom: 1px solid #eee;
 }
 
-.menu-item-details {
+.menu-item-content {
     padding: 15px;
 }
 
 .menu-item-name {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 10px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;
 }
 
 .menu-item-description {
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #666666;
+    margin-bottom: 8px;
+}
+
+.menu-item-category {
+    font-size: 1rem;
+    color: #888888;
+    margin-bottom: 8px;
+}
+
+.menu-item-rating {
+    font-size: 1rem;
+    color: #4caf50;
+    margin-bottom: 8px;
+}
+
+.menu-item-availability.available {
+    font-size: 1rem;
+    color: #28a745;
+}
+
+.menu-item-availability.unavailable {
+    font-size: 1rem;
+    color: #dc3545;
+}
+
+.menu-item-type {
+    font-size: 1rem;
+    color: #555555;
+}
+
+.menu-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-top: 1px solid #eee;
 }
 
 .menu-item-price {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     font-weight: bold;
-    color: #28a745;
-    margin: 10px 15px;
-    text-align: right;
+    color: #e91e63;
+}
+
+.menu-add-button {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-add-button:hover {
+    background-color: #0056b3;
 }

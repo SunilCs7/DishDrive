@@ -54,3 +54,20 @@
         margin: 0 auto;
     }
 }
+
+/* Rescard and Promoted */
+.res-card {
+    position: relative;
+}
+
+.promoted {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 4px 8px;
+    background-color: black;
+    color: white;
+    z-index: 100;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
