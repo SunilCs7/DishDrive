@@ -13,7 +13,8 @@ const Body = () => {
   const [filteredRestuarant, setFilteredRestuarant] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  console.log("Body", listOfRestaurants);
+  // console.log("Body", listOfRestaurants);
+
   const RstaurantCardWithPromoted = WithPromotedLebel(RestaurantCard);
 
   // Custom hook to check online status

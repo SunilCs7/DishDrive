@@ -4,5 +4,3 @@ export const CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/";
 
 export const MENU_API =
   "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=20.2959847&lng=85.8246101&restaurantId=";
-
-// import { MENU_URL } from "../../utils/Contrants";
