@@ -8,6 +8,7 @@ import RestaurantCategory from "../RestaurantCategory/RestaurantCategory";
 const RestuarantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
   const params = useParams();
+  const [showIndex, setShowIndex] = useState(null);
 
   const fetchMenu = async () => {
     try {
@@ -43,10 +44,16 @@ const RestuarantMenu = () => {
       </div>
       {/* Categories Accordion */}
       <div className="menu-categories">
-        {categories.map((category) => (
+        {categories.map((category, index) => (
           <RestaurantCategory
             key={category?.card?.card?.title}
             data={category?.card?.card}
+            // showItems={index === showIndex ? true : false}
+            // setShowItems={() => setShowIndex(index)}
+            showItems={index === showIndex}
+            setShowItems={() =>
+              setShowIndex(index === showIndex ? null : index)
+            }
           />
         ))}
       </div>

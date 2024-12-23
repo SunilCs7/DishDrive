@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import "./RestaurantCategory.css";
 import ItemList from "../ItemList/ItemList";
 
-const RestaurantCategory = ({ data }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const RestaurantCategory = ({ data, showItems, setShowItems, index }) => {
+  // Controlled Components controling by its parents components RestaurantsMenu and lifting satte up
   const handleClick = () => {
-    setIsOpen(!isOpen);
+    setShowItems();
   };
 
   return (
@@ -14,9 +14,9 @@ const RestaurantCategory = ({ data }) => {
         <span className="category-title">
           {data.title} ({data?.itemCards?.length})
         </span>
-        <span>{isOpen === true ? "⬆️" : "⬇️"}</span>
+        <span>{showItems === true ? "⬆️" : "⬇️"}</span>
       </div>
-      {isOpen && <ItemList items={data?.itemCards} />}
+      {showItems && <ItemList items={data?.itemCards} />}
     </div>
   );
 };
