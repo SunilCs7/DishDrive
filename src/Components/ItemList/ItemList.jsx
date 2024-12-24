@@ -1,8 +1,18 @@
 import React from "react";
 import "./ItemList.css";
 import { CDN_URL } from "../../utils/Contrants";
+// redux disptach
+import { useDispatch } from "react-redux";
+import { addItems } from "../../utils/cartSlice";
 
 const ItemList = ({ items }) => {
+  // Redux Things
+  const dispatch = useDispatch();
+
+  const handleAddItem = (item) => {
+    // Dispatch and Action
+    dispatch(addItems(item));
+  };
   return (
     <div className="item-list">
       {items.map((item) => (
@@ -14,7 +24,9 @@ const ItemList = ({ items }) => {
             />
 
             <div className="add-btn-container">
-              <button className="add-btn">Add +</button>
+              <button className="add-btn" onClick={() => handleAddItem(item)}>
+                Add +
+              </button>
             </div>
           </div>
 

@@ -5,12 +5,13 @@ import Contact from "./Components/Contact/Contact";
 import Body from "./Components/Body/Body";
 import Error from "./Components/Error/Error";
 import RestuarantMenu from "./Components/RestuarantMenu/RestuarantMenu";
+import Cart from "./Components/Cart/Cart";
 
 const appRoutes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    // errorElement: <Error />,
+    errorElement: <Error />,
     children: [
       {
         path: "/",
@@ -27,6 +28,10 @@ const appRoutes = createBrowserRouter([
       {
         path: "/restuarant/:resid",
         element: <RestuarantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

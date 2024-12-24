@@ -22,7 +22,10 @@ const Navbar = () => {
     setLoginBtn(loginBtn === "Login" ? "Logout" : "Login");
   };
 
+  //  Subscring to  the store
+
   const cartItems = useSelector((store) => store.cart.items);
+  // console.log(cartItems);
 
   return (
     <div className="navbar">
@@ -43,8 +46,11 @@ const Navbar = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li>
-            <FontAwesomeIcon icon={faCartPlus} />
-            <p>{cartItems.length}</p>
+            <Link to="/cart">
+              {" "}
+              <FontAwesomeIcon icon={faCartPlus} />
+              <p>{cartItems.length}</p>
+            </Link>
           </li>
           <li
             className={`login-btn ${loginBtn === "Login" ? "login" : "logout"}`}
