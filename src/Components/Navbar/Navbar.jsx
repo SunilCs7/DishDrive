@@ -4,6 +4,14 @@ import navLogo from "../../assets/logo_Proffood.avif";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../CustomHook/useOnlineStatus";
 
+//  cart related things
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
+
+//for  Subscring to  the store using useSelector
+
+import { useSelector } from "react-redux";
+
 const Navbar = () => {
   // Custom hook to check online status
   const onlineStatus = useOnlineStatus(); // Ensures hook is used unconditionally
@@ -13,6 +21,8 @@ const Navbar = () => {
   const toggleLogin = () => {
     setLoginBtn(loginBtn === "Login" ? "Logout" : "Login");
   };
+
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
     <div className="navbar">
@@ -32,7 +42,10 @@ const Navbar = () => {
           <li>
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>Cart</li>
+          <li>
+            <FontAwesomeIcon icon={faCartPlus} />
+            <p>{cartItems.length}</p>
+          </li>
           <li
             className={`login-btn ${loginBtn === "Login" ? "login" : "logout"}`}
             onClick={toggleLogin}

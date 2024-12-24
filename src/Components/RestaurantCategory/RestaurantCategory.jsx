@@ -2,7 +2,7 @@ import React from "react";
 import "./RestaurantCategory.css";
 import ItemList from "../ItemList/ItemList";
 
-const RestaurantCategory = ({ data, showItems, setShowItems, index }) => {
+const RestaurantCategory = ({ data, showItems, setShowItems }) => {
   // Controlled Components controling by its parents components RestaurantsMenu and lifting satte up
   const handleClick = () => {
     setShowItems();
