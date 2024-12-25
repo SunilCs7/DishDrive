@@ -1,10 +1,14 @@
+* {
+    transition: all 0.2s ease-in-out;
+}
+
 /* Navbar container */
 .navbar {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #ff6f3c;
-    /* Vibrant orange for a food-themed app */
     padding: 15px 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -16,15 +20,21 @@
 .nav-logo {
     display: flex;
     align-items: center;
+    width: 20%;
+}
+
+.nav-logo {
+    width: 20%;
 }
 
 .nav-logo img {
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
     border-radius: 50%;
     /* Circular logo */
-    margin-right: 10px;
 }
+
+
 
 .nav-logo h1 {
     font-size: 24px;
@@ -34,6 +44,15 @@
 }
 
 /* Navigation menu */
+.nav-menu {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    justify-content: end;
+
+}
+
 .nav-menu ul {
     list-style: none;
     display: flex;
@@ -52,9 +71,7 @@
 
 .nav-menu li:hover {
     color: #ffe8d6;
-    /* Light orange hover effect */
     transform: scale(1.1);
-    /* Subtle zoom effect */
 }
 
 /* Links styling */
@@ -64,59 +81,43 @@
     /* Inherit color from parent for easy hover effect */
 }
 
-.navbar a:hover {
-    text-decoration: underline;
-    /* Underline effect on hover */
-}
 
-/* Active link styling */
 .navbar a:active {
     color: #ffd700;
-    /* Gold color for active link */
 }
 
 /* Login button styling */
-.login-btn {
-    font-weight: bold;
-    padding: 8px 20px;
-    background-color: #fff;
-    color: #ff6f3c;
+.login-logout-btn {
+    padding: 10px 15px;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    letter-spacing: 0.5px;
     border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    cursor: pointer;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: bold;
+    transform: scale(1);
 }
 
-/* Login button styles */
-.login-btn.login {
-    background-color: #fff;
-    color: #ff6f3c;
+.login-logout-btn:hover {
+    background-color: rgba(0, 0, 0, 1);
+    transform: scale(1.1);
 }
 
-.login-btn.login:hover {
-    background-color: #ffe8d6;
-    color: #333;
-    /* Dark text for contrast */
+
+.addCart {
+    position: relative;
+    /* border: 2px solid blueviolet; */
 }
 
-.login-btn.login:active {
-    background-color: #ffcc99;
-    /* Subtle active feedback */
-}
+.cartNo {
+    position: absolute;
+    /* border: 2px solid black; */
+    font-size: 10px;
+    background-color: red;
+    padding: 2px 5px;
+    border-radius: 50%;
+    top: -8px;
+    right: -8px;
 
-/* Logout button styles */
-.login-btn.logout {
-    background-color: #ff6f3c;
-    color: #fff;
-}
-
-.login-btn.logout:hover {
-    background-color: #ffe8d6;
-    color: #ff6f3c;
-    /* Contrast on hover */
-}
-
-.login-btn.logout:active {
-    background-color: #ffcc99;
-    /* Subtle active feedback */
 }
