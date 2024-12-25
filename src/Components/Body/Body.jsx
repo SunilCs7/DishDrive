@@ -8,6 +8,9 @@ import { Link } from "react-router";
 import useOnlineStatus from "../../CustomHook/useOnlineStatus";
 import Game from "../Game/Game";
 
+// Live API URL 
+import { SWIGGY_API } from "../../utils/Contrants";
+
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestuarant, setFilteredRestuarant] = useState([]);
@@ -26,14 +29,24 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch("http://localhost:4000/data");
+    // const data = await fetch("http://localhost:4000/data");
+    const data = await fetch(SWIGGY_API);
 
     const json = await data.json();
-    setTimeout(() => {
-      // Your code to execute after the delay
-      setListOfRestaurants(json?.cards || []);
-      setFilteredRestuarant(json?.cards || []);
-    }, 100); // 2-second delay
+    const{cards}=json?.data?.cards?.[1]?.groupedCard?.cardGroupMap?.RESTAURANT
+    // setTimeout(() => {
+    //   // Your code to execute after the delay
+    //   setListOfRestaurants(json?.cards || []);
+    //   setFilteredRestuarant(json?.cards || []);
+    // }, 100); // 2-second delay
+
+
+//  Live API
+    setListOfRestaurants(cards || []);
+    setFilteredRestuarant(cards || []);
+    
+
+
   };
 
   if (!onlineStatus) {
@@ -47,7 +60,7 @@ const Body = () => {
   // Function to handle search
   const handleSearch = () => {
     const filtered = listOfRestaurants.filter((restaurant) =>
-      restaurant?.card?.card?.info?.name
+      restaurant?.card?.card?.info?.cuisines.join(", ")
         ?.toLowerCase()
         .includes(searchText.toLowerCase())
     );
