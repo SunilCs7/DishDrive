@@ -1,12 +1,8 @@
-# 🚀 DishDrive 🍔📱  
+# DishDrive 🍔📱  
 
-**DishDrive** is a next-generation food delivery platform that seamlessly connects users with their favorite restaurants. With real-time menu updates, smart search, and a highly optimized user interface, DishDrive redefines the food ordering experience.  
-
----
+A modern food delivery platform that brings your favorite restaurants right to your fingertips. Experience seamless food ordering with real-time menu updates, smart search, and a smooth checkout process.
 
 ## 🌐 Live Demo  
-
-Experience the app live:  
 **[DishDrive Deployment](https://dishdrive-b9d9d.web.app/)**  
 
 ---
@@ -67,3 +63,38 @@ Follow these steps to set up the project locally:
 1. **Clone the Repository**:  
    ```bash
    git clone https://github.com/SunilCs7/DishDrive.git
+
+  2. Navigate to project directory
+``` bash
+cd DishDrive
+ ```
+
+3. Install dependencies
+  ``` bash
+   npm install
+  ```
+
+4. Start development server
+ ``` bash
+ npm start
+ ```
+
+Your app will be running at http://localhost:3000
+
+📱 Screenshots
+HomeScreen
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/HomePage.png)
+
+
+Menu
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/MenuCart.png)
+
+
+Menu
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/MenuCart.png)
+
+MenuShow
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/MenuPage.png)
+
+AddedItemsCart
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/AddedItemsPage.png)
