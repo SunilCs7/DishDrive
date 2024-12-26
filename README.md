@@ -66,3 +66,39 @@ A modern food delivery platform that brings your favorite restaurants right to y
 1. **Clone the repository**:  
    ```bash
    git clone https://github.com/SunilCs7/DishDrive.git
+
+
+  2. Navigate to project directory
+``` bash
+cd DishDrive
+ ```
+
+3. Install dependencies
+  ``` bash
+   npm install
+  ```
+
+4. Start development server
+ ``` bash
+ npm start
+ ```
+
+Your app will be running at http://localhost:1234
+
+📱 Screenshots
+HomeScreen
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/HomePage.png)
+
+
+Menu
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/MenuCart.png)
+
+
+Menu
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/MenuCart.png)
+
+MenuShow
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/MenuPage.png)
+
+AddedItemsCart
+![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/AddedItemsPage.png)
