@@ -90,8 +90,6 @@ Menu
 ![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/MenuCart.png)
 
 
-Menu
-![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/MenuCart.png)
 
 MenuShow
 ![](https://github.com/SunilCs7/DishDrive/blob/main/src/GitHubView/MenuPage.png)
