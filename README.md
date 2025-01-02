@@ -45,7 +45,7 @@ A modern food delivery platform that brings your favorite restaurants right to y
 ### **Frontend Development**  
 - **React.js**: Dynamic and component-driven user interfaces.  
 - **React Router DOM**: Streamlined navigation and route management.  
-- **Tailwind CSS**: Utility-first styling for rapid and consistent design.  
+
 
 ### **State Management**  
 - **Redux**: State management for predictable and scalable architecture.  
